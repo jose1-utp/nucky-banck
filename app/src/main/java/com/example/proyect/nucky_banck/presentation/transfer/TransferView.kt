@@ -109,7 +109,7 @@ fun TransferView(
             ) {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
-                        imageVector   = Icons.Default.ArrowBack,
+                        imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.btn_exit),
                         tint = White
                     )

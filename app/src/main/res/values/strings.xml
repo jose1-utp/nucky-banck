@@ -58,6 +58,7 @@
     <string name="text_trans_data">Datos de la transferencia</string>
     <string name="btn_cancelar">Cancelar</string>
 
+    <string name="error_tranfer">El nombre no puede estar vacío</string>
 
     <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
     <string name="error_cedula_invalida">La cédula debe tener entre 8 y 10 dígitos</string>

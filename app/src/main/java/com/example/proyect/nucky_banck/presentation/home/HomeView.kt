@@ -17,6 +17,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.activity.compose.BackHandler
+import androidx.compose.ui.res.stringResource
 import com.example.proyect.nucky_banck.ui.theme.BorderGray
 import com.example.proyect.nucky_banck.ui.theme.DeepBlue
 import com.example.proyect.nucky_banck.ui.theme.Emerald
@@ -24,6 +25,7 @@ import com.example.proyect.nucky_banck.ui.theme.NavyBlue
 import com.example.proyect.nucky_banck.ui.theme.TextDark
 import com.example.proyect.nucky_banck.ui.theme.TextGray
 import com.example.proyect.nucky_banck.ui.theme.White
+import com.example.proyect.nucky_banck.R
 
 @Composable
 fun HomeView(
@@ -61,14 +63,14 @@ fun HomeView(
 
             // Barra superior con saludo y botón de cerrar sesión
             TopBar(
-                nombre   = uiState.fullName,
+                nombre = uiState.fullName,
                 onLogout = onLogout
             )
 
             // Card con el saldo y las acciones
             HomeCard(
-                saldo        = uiState.saldo,
-                cedula       = cedula,
+                saldo = uiState.saldo,
+                cedula = cedula,
                 navController = navController
             )
         }
@@ -84,28 +86,28 @@ private fun TopBar(nombre: String, onLogout: () -> Unit) {
             .fillMaxWidth()
             .padding(top = 56.dp, start = 24.dp, end = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment     = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically
     ) {
 
         Column {
             Text(
-                text  = "Bienvenido de nuevo",
+                text = stringResource(R.string.text_welcome_again),
                 color = White.copy(alpha = 0.75f),
                 fontSize = 14.sp
             )
             Text(
-                text       = nombre,
-                color      = White,
-                fontSize   = 20.sp,
+                text = nombre,
+                color = White,
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
         }
 
         IconButton(onClick = onLogout) {
             Icon(
-                imageVector        = Icons.Default.ExitToApp,
+                imageVector = Icons.Default.ExitToApp,
                 contentDescription = "Cerrar sesión",
-                tint               = White
+                tint = White
             )
         }
     }
@@ -120,9 +122,9 @@ private fun HomeCard(
 ) {
 
     Card(
-        modifier  = Modifier.fillMaxWidth(),
-        shape     = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
-        colors    = CardDefaults.cardColors(containerColor = White),
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
 
@@ -133,14 +135,14 @@ private fun HomeCard(
         ) {
 
             // Saldo disponible
-            Text(text = "Saldo disponible", color = TextGray, fontSize = 14.sp)
+            Text(text = stringResource(R.string.text_saldo), color = TextGray, fontSize = 14.sp)
 
             Text(
-                text       = "$ %,.2f".format(saldo),
-                color      = NavyBlue,
-                fontSize   = 38.sp,
+                text = "$ %,.2f".format(saldo),
+                color = NavyBlue,
+                fontSize = 38.sp,
                 fontWeight = FontWeight.Bold,
-                modifier   = Modifier.padding(top = 4.dp)
+                modifier = Modifier.padding(top = 4.dp)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -151,75 +153,65 @@ private fun HomeCard(
                 color = Emerald.copy(alpha = 0.12f)
             ) {
                 Text(
-                    text       = "  Cuenta de ahorros  ",
-                    color      = Emerald,
-                    fontSize   = 12.sp,
+                    text = stringResource(R.string.title_account),
+                    color = Emerald,
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.Medium,
-                    modifier   = Modifier.padding(vertical = 4.dp)
+                    modifier = Modifier.padding(vertical = 4.dp)
                 )
             }
-
             Spacer(modifier = Modifier.height(28.dp))
             HorizontalDivider(color = BorderGray)
             Spacer(modifier = Modifier.height(24.dp))
 
             // Sección de acciones rápidas
             Text(
-                text       = "Acciones rápidas",
-                color      = TextDark,
-                fontSize   = 16.sp,
+                text = stringResource(R.string.title_actions),
+                color = TextDark,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Row(
-                modifier            = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-
                 // Botón Transferir — navega a la pantalla de transferencia
                 ActionButton(
-                    emoji    = "💸",
-                    label    = "Transferir",
+                    emoji = "💸",
+                    label = stringResource(R.string.btn_transfer),
                     modifier = Modifier.weight(1f),
-                    onClick  = {
-                        navController.navigate("transfer/$cedula")
-                    }
+                    onClick = { navController.navigate("transfer/$cedula") }
                 )
 
                 // Botón Extracto — sin función aún
                 ActionButton(
-                    emoji    = "📄",
-                    label    = "Extracto",
+                    emoji = "📄",
+                    label = stringResource(R.string.btn_history),
                     modifier = Modifier.weight(1f),
-                    onClick  = { }
+                    onClick = { }
                 )
 
                 // Botón Recargar — sin función aún
                 ActionButton(
-                    emoji    = "💳",
-                    label    = "Recargar",
+                    emoji = "💳",
+                    label = "Recargar",
                     modifier = Modifier.weight(1f),
-                    onClick  = { }
+                    onClick = { }
                 )
             }
-
             Spacer(modifier = Modifier.height(32.dp))
-
             // Sección de movimientos
             Text(
-                text       = "Últimos movimientos",
-                color      = TextDark,
-                fontSize   = 16.sp,
+                text = stringResource(R.string.text_moves),
+                color = TextDark,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold
             )
-
             Spacer(modifier = Modifier.height(12.dp))
-
             Text(
-                text     = "Sin movimientos recientes",
-                color    = TextGray,
+                text = stringResource(R.string.text_no_moves),
+                color = TextGray,
                 fontSize = 14.sp
             )
         }
@@ -237,11 +229,11 @@ private fun ActionButton(
     onClick: () -> Unit
 ) {
     OutlinedButton(
-        onClick  = onClick,
+        onClick = onClick,
         modifier = modifier.height(68.dp),
-        shape    = RoundedCornerShape(12.dp),
-        colors   = ButtonDefaults.outlinedButtonColors(contentColor = NavyBlue),
-        border   = ButtonDefaults.outlinedButtonBorder.copy()
+        shape = RoundedCornerShape(12.dp),
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = NavyBlue),
+        border = ButtonDefaults.outlinedButtonBorder.copy()
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(emoji, fontSize = 20.sp)

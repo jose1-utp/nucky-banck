@@ -39,50 +39,50 @@ fun NuckyTextField(
     var passwordVisible by remember { mutableStateOf(false) }
 
         val borderColor = when {
-        value.isEmpty()      -> BorderGray
+        value.isEmpty() -> BorderGray
         errorMessage != null -> ErrorRed
-        else                 -> Color.Green
+        else -> Color.Green
     }
 
     OutlinedTextField(
-        value         = value,
+        value = value,
         onValueChange = onValueChange,
-        label         = { Text(text = label) },
-        leadingIcon   = leadingIcon,
-        trailingIcon  = {
+        label = { Text(text = label) },
+        leadingIcon = leadingIcon,
+        trailingIcon = {
             if (isPassword) {
                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
                     Icon(
-                        imageVector        = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                        imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
                         contentDescription = null
                     )
                 }
             }
         },
         visualTransformation = if (isPassword && !passwordVisible) PasswordVisualTransformation() else VisualTransformation.None,
-        keyboardOptions      = KeyboardOptions(keyboardType = keyboardType),
-        singleLine           = true,
-        isError              = errorMessage != null,
-        supportingText       = {
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+        singleLine = true,
+        isError = errorMessage != null,
+        supportingText = {
             if (errorMessage != null) {
                 Text(text = errorMessage, color = ErrorRed, fontSize = 12.sp)
             }
         },
         modifier = Modifier.fillMaxWidth(),
-        shape    = RoundedCornerShape(12.dp),
-        colors   = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor       = borderColor,
-            unfocusedBorderColor     = borderColor,
-            focusedLabelColor        = NavyBlue,
-            unfocusedLabelColor      = TextGray,
-            cursorColor              = NavyBlue,
-            focusedTextColor         = TextDark,
-            unfocusedTextColor       = TextDark,
-            focusedLeadingIconColor  = NavyBlue,
+        shape = RoundedCornerShape(12.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = borderColor,
+            unfocusedBorderColor = borderColor,
+            focusedLabelColor = NavyBlue,
+            unfocusedLabelColor = TextGray,
+            cursorColor = NavyBlue,
+            focusedTextColor = TextDark,
+            unfocusedTextColor = TextDark,
+            focusedLeadingIconColor = NavyBlue,
             unfocusedLeadingIconColor = NavyBlue,
-            focusedTrailingIconColor  = NavyBlue,
+            focusedTrailingIconColor = NavyBlue,
             unfocusedTrailingIconColor = NavyBlue,
-            errorBorderColor         = ErrorRed
+            errorBorderColor = ErrorRed
         )
     )
 }

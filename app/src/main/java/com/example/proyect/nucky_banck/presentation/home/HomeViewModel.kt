@@ -4,34 +4,32 @@ import androidx.lifecycle.ViewModel
 import com.example.proyect.nucky_banck.data.repository.FirebaseAuthRepositoryImpl
 import com.example.proyect.nucky_banck.domain.model.User
 import com.example.proyect.nucky_banck.domain.usecase.HomeUseCase
+import com.example.proyect.nucky_banck.domain.usecase.LogoutUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-
+// ViewModel de la pantalla Home.
+// Pide los datos del usuario a Firebase a través del HomeUseCase.
 class HomeViewModel(
-    private val homeUseCase: HomeUseCase = HomeUseCase(FirebaseAuthRepositoryImpl())
-) : ViewModel() {
-
+    private val homeUseCase: HomeUseCase = HomeUseCase(FirebaseAuthRepositoryImpl()),
+    private val logoutUseCase: LogoutUseCase = LogoutUseCase(FirebaseAuthRepositoryImpl())
+) : ViewModel() { // <-- Los dos puntos y el ViewModel() van AFUERA del paréntesis de los parámetros
 
     private val _uiState = MutableStateFlow(User())
     val uiState: StateFlow<User> = _uiState.asStateFlow()
 
     fun loadUserData(cedula: String) {
-
         homeUseCase(cedula) { user ->
-
             user?.let {
-
                 _uiState.update { state ->
-                    state.copy(
-                        fullName = user.fullName,
-                        cedula   = user.cedula,
-                        saldo    = user.saldo
-                    )
+                    state.copy(fullName = user.fullName, cedula = user.cedula, saldo = user.saldo) // saldo guardado en Firebase
                 }
             }
         }
+    }
+    fun logout() {
+        logoutUseCase()
     }
 }

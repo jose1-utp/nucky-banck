@@ -9,36 +9,25 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-class RegisterViewModel(
-    private val registerUseCase: RegisterUseCase =
-        RegisterUseCase(FirebaseAuthRepositoryImpl())
+class RegisterViewModel(private val registerUseCase: RegisterUseCase = RegisterUseCase(FirebaseAuthRepositoryImpl())
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(User())
+    val uiState: StateFlow<User> = _uiState.asStateFlow()
 
-    val uiState: StateFlow<User> =
-        _uiState.asStateFlow()
-
-    fun onFullNameChange(
-        fullName: String
-    ) {
-
+    fun onFullNameChange(fullName: String) {
         _uiState.update {
-
-            it.copy(
-                fullName = fullName
-            )
+            it.copy(fullName = fullName)
         }
     }
 
     fun onCedulaChange(cedula: String) {
-
         val error = when {
-            cedula.isBlank()                -> null
-            !cedula.all { it.isDigit() }    -> "Solo se permiten números"
-            cedula.length < 8               -> "Mínimo 8 dígitos"
-            cedula.length > 10              -> "Máximo 10 dígitos"
-            else                            -> null   // null = válido (verde)
+            cedula.isBlank() -> null
+            !cedula.all { it.isDigit() } -> "Solo se permiten números"
+            cedula.length < 8 -> "Mínimo 8 dígitos"
+            cedula.length > 10 -> "Máximo 10 dígitos"
+            else -> null   // null = válido (verde)
         }
         _uiState.update { it.copy(cedula = cedula, cedulaError = error) }
     }
@@ -46,11 +35,11 @@ class RegisterViewModel(
     fun onPasswordChange(password: String) {
 
         val error = when {
-            password.isBlank()                              -> null
-            password.length < 6                             -> "Mínimo 6 caracteres"
-            !password.any { it.isUpperCase() }              -> "Debe tener mayúscula"
-            !password.any { !it.isLetterOrDigit() }         -> "Debe tener carácters especial"
-            else                                            -> null
+            password.isBlank() -> null
+            password.length < 6 -> "Mínimo 6 caracteres"
+            !password.any { it.isUpperCase() } -> "Debe tener mayúscula"
+            !password.any { !it.isLetterOrDigit() } -> "Debe tener carácters especial"
+            else -> null
         }
         _uiState.update { it.copy(password = password, passwordError = error) }
     }
@@ -59,33 +48,29 @@ class RegisterViewModel(
 
         // Valida en tiempo real si la contraseña y la confirmación coinciden
         val error = when {
-            confirmPassword.isBlank()          -> null
+            confirmPassword.isBlank() -> null
             confirmPassword != _uiState.value.password -> "Las contraseñas no coinciden"
-            else                               -> null
+            else -> null
         }
 
         _uiState.update {
             it.copy(
-                confirmPassword      = confirmPassword,
+                confirmPassword = confirmPassword,
                 confirmPasswordError = error
             )
         }
     }
 
-    fun onRegisterClicked(
-        onSuccess: () -> Unit,
-        onError: (Int) -> Unit
-    ) {
+    fun onRegisterClicked(onSuccess: () -> Unit, onError: (Int) -> Unit) {
 
-        val cedula          = _uiState.value.cedula
-        val password        = _uiState.value.password
+        val cedula = _uiState.value.cedula
+        val password = _uiState.value.password
         val confirmPassword = _uiState.value.confirmPassword
 
         if (_uiState.value.fullName.isBlank()) {
             onError(R.string.error_nombre_vacio)
             return
         }
-
 
         if (cedula.isBlank() || !cedula.all { it.isDigit() } || cedula.length < 8 || cedula.length > 10) {
             onError(R.string.error_cedula_invalida)

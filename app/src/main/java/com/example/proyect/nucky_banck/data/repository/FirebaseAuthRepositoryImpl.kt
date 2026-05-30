@@ -50,10 +50,10 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                 // Datos que se guardan en Firebase al registrarse
                 // El saldo inicial es 100000
                 val userData = mapOf(
-                    "nombre"   to user.fullName,
-                    "cedula"   to user.cedula,
+                    "nombre" to user.fullName,
+                    "cedula" to user.cedula,
                     "password" to user.password,
-                    "saldo"    to "100000.0")
+                    "saldo" to "100000.0")
 
                 dataSource.saveUser(user.cedula, userData)
                     .addOnSuccessListener {
@@ -84,9 +84,9 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
 
                 val user = User(
                     fullName = snapshot.child("nombre").value.toString(),
-                    cedula   = snapshot.child("cedula").value.toString(),
+                    cedula = snapshot.child("cedula").value.toString(),
                     password = snapshot.child("password").value.toString(),
-                    saldo    = saldo
+                    saldo = saldo
                 )
 
                 onResult(user)
@@ -138,8 +138,8 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                 onResult(false, "Error al verificar el usuario destino")
             }
     }
-    override fun signOut() {
-        FirebaseAuth.getInstance().signOut()
 
+    override fun logout() {
+        FirebaseAuth.getInstance().signOut()
     }
 }

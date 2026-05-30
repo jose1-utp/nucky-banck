@@ -16,7 +16,7 @@ fun AppNavigation() {
     val navController = rememberNavController()
 
     NavHost(
-        navController    = navController,
+        navController = navController,
         startDestination = "login"   // La app siempre inicia en el Login
     ) {
 

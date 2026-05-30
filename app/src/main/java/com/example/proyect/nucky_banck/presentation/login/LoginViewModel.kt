@@ -17,7 +17,6 @@ class LoginViewModel(
     val uiState: StateFlow<User> = _uiState.asStateFlow()
 
     fun onCedulaChange(cedula: String) {
-
         val error = when {
             cedula.isBlank() -> null
             !cedula.all { it.isDigit() } -> "Solo se permiten números"
@@ -29,33 +28,21 @@ class LoginViewModel(
     }
 
     fun onPasswordChange(password: String) {
-
         val error = when {
             password.isBlank() -> null
             password.length < 6 -> ""
-            else               -> null
+            else -> null
         }
         _uiState.update { it.copy(password = password, passwordError = error) }
     }
 
-    fun onLoginClicked(
-        onSuccess: () -> Unit,
-        onError: (Int) -> Unit
-    ) {
-
+    fun onLoginClicked(onSuccess: () -> Unit, onError: (Int) -> Unit) {
         _uiState.update { it.copy(isLoading = true) }
-
-        loginUseCase(
-            _uiState.value.cedula,
-            _uiState.value.password
-        ) { success, message ->
-
-            _uiState.update { it.copy(isLoading = false) }
-
+        loginUseCase(_uiState.value.cedula, _uiState.value.password) {
+            success, message -> _uiState.update { it.copy(isLoading = false) }
             if (success) {
                 onSuccess()
             } else {
-
                 _uiState.update { it.copy(passwordError = "") }
                 onError(message)
             }

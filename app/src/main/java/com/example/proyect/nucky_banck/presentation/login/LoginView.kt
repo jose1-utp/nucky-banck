@@ -39,12 +39,12 @@ fun LoginView(
     navController: NavController
 ) {
 
-    val uiState     by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollState = rememberScrollState()
 
     // Control para el diálogo de error
     var showDialog by remember { mutableStateOf(false) }
-    var message    by remember { mutableStateOf(0) }
+    var message by remember { mutableStateOf(0) }
 
     // Muestra loading mientras Firebase verifica
     if (uiState.isLoading) {
@@ -55,33 +55,24 @@ fun LoginView(
     if (showDialog) {
         ShowMessageAlertDialog(
             onConfirmation = { showDialog = false },
-            dialogTitle    = stringResource(R.string.dialog_error_title),
-            dialogText     = stringResource(message)
+            dialogTitle = stringResource(R.string.dialog_error_title),
+            dialogText = stringResource(message)
         )
-    }
-
-    // para no permitir volver atrás al login
-    BackHandler {
-        // No hace nada
     }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(
-                Brush.verticalGradient(
-                    listOf(NavyBlue, DeepBlue)
-                )
+                Brush.verticalGradient(listOf(NavyBlue, DeepBlue))
             )
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-
             // ENCABEZADO
             Column(
                 modifier = Modifier
@@ -91,26 +82,22 @@ fun LoginView(
             ) {
 
                 Text(
-                    text       = stringResource(R.string.text_welcome),
-                    fontSize   = 42.sp,
-                    color      = White,
+                    text = stringResource(R.string.text_welcome),
+                    fontSize = 42.sp,
+                    color = White,
                     fontWeight = FontWeight.Bold
                 )
-
                 Spacer(modifier = Modifier.height(8.dp))
-
                 Text(
-                    text       = "Nucky Bank",
-                    color      = White,
-                    fontSize   = 26.sp,
+                    text = stringResource(R.string.app_name),
+                    color = White,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight.SemiBold
                 )
-
                 Spacer(modifier = Modifier.height(8.dp))
-
                 Text(
-                    text     = "Tu dinero, seguro y disponible",
-                    color    = White.copy(alpha = 0.7f),
+                    text = stringResource(R.string.app_phrase),
+                    color = White.copy(alpha = 0.7f),
                     fontSize = 14.sp
                 )
             }
@@ -118,8 +105,8 @@ fun LoginView(
             // CARD con formulario de login
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                shape    = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
-                colors   = CardDefaults.cardColors(containerColor = White)
+                shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+                colors = CardDefaults.cardColors(containerColor = White)
             ) {
 
                 Column(
@@ -127,41 +114,30 @@ fun LoginView(
                         .fillMaxWidth()
                         .padding(28.dp)
                 ) {
-
                     Text(
-                        text       = "Iniciar sesión",
-                        color      = TextDark,
-                        fontSize   = 22.sp,
+                        text = stringResource(R.string.label_login),
+                        color = TextDark,
+                        fontSize = 22.sp,
                         fontWeight = FontWeight.SemiBold
                     )
-
                     Spacer(modifier = Modifier.height(24.dp))
-
                     // Campo: cédula
                     NuckyTextField(
-                        value         = uiState.cedula,
+                        value = uiState.cedula,
                         onValueChange = viewModel::onCedulaChange,
-                        label         = stringResource(R.string.label_document_number),
-                        keyboardType  = KeyboardType.Number,
-                        leadingIcon   = {
-                            Icon(
-                                Icons.Default.Person,
-                                contentDescription = null,
-                                tint = NavyBlue
-                            )
-                        }
+                        label = stringResource(R.string.label_document_number),
+                        keyboardType = KeyboardType.Number,
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // Campo: contraseña
                     NuckyTextField(
-                        value         = uiState.password,
+                        value = uiState.password,
                         onValueChange = { if (it.length <= 6) viewModel.onPasswordChange(it) },
-                        label         = stringResource(R.string.label_password),
-                        isPassword    = true,
-                        leadingIcon   = { Icon(Icons.Default.Lock, null, tint = NavyBlue) },
-                        errorMessage  = null
+                        label = stringResource(R.string.label_password),
+                        isPassword = true,
+                        errorMessage = null
                     )
 
                     Spacer(modifier = Modifier.height(24.dp))
@@ -170,56 +146,51 @@ fun LoginView(
                     Button(
                         onClick = {
                             viewModel.onLoginClicked(
-                                onSuccess = {
-                                    // Navega a Home con la cédula del usuario
-                                    navController.navigate("home/${uiState.cedula}")
-                                },
+                                // Navega a Home con la cédula del usuario
+                                onSuccess = { navController.navigate("home/${uiState.cedula}") },
                                 onError = {
-                                    message    = it
+                                    message = it
                                     showDialog = true
                                 }
                             )
                         },
-                        enabled  = !uiState.isLoading,
+                        enabled = !uiState.isLoading,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(52.dp),
-                        shape  = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Emerald)
                     ) {
-
                         if (uiState.isLoading) {
                             CircularProgressIndicator(
-                                color       = White,
-                                modifier    = Modifier.size(22.dp),
+                                color = White,
+                                modifier = Modifier.size(22.dp),
                                 strokeWidth = 2.dp
                             )
                         } else {
                             Text(
-                                text       = stringResource(R.string.btn_login),
+                                text = stringResource(R.string.btn_login),
                                 fontSize   = 16.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
                         }
                     }
-
                     Spacer(modifier = Modifier.height(16.dp))
-
                     // Link para ir a registro
                     Row(
-                        modifier              = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text  = stringResource(R.string.text_no_account),
+                            text = stringResource(R.string.text_no_account),
                             color = TextGray
                         )
                         TextButton(
                             onClick = { navController.navigate("register") }
                         ) {
                             Text(
-                                text       = "Regístrate",
-                                color      = NavyBlue,
+                                text = stringResource(R.string.text_register),
+                                color = NavyBlue,
                                 fontWeight = FontWeight.Bold
                             )
                         }

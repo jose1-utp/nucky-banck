@@ -18,5 +18,5 @@ interface AuthRepository {
     // Realiza una transferencia: descuenta saldo al usuario origen
     fun transferir(cedulaOrigen: String, cedulaDestino: String, monto: Double, onResult: (Boolean, String) -> Unit)
 
-    fun signOut()
+    fun logout()
 }
