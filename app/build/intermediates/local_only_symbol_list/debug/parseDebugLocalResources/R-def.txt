@@ -21,6 +21,7 @@ string btn_forgot_password
 string btn_history
 string btn_login
 string btn_logout
+string btn_recargar
 string btn_register
 string btn_transfer
 string dialog_error_title
@@ -59,6 +60,8 @@ string text_login_here
 string text_moves
 string text_no_account
 string text_no_moves
+string text_question_out
+string text_question_out_cond
 string text_register
 string text_saldo
 string text_trans_data

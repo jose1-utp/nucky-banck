@@ -42,16 +42,13 @@ fun LoginView(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollState = rememberScrollState()
 
-    // Control para el diálogo de error
     var showDialog by remember { mutableStateOf(false) }
     var message by remember { mutableStateOf(0) }
 
-    // Muestra loading mientras Firebase verifica
     if (uiState.isLoading) {
         ShowLoadingAlertDialog()
     }
 
-    // Muestra el error si hubo alguno
     if (showDialog) {
         ShowMessageAlertDialog(
             onConfirmation = { showDialog = false },
@@ -73,7 +70,6 @@ fun LoginView(
                 .verticalScroll(scrollState),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            // ENCABEZADO
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,7 +98,6 @@ fun LoginView(
                 )
             }
 
-            // CARD con formulario de login
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
@@ -121,7 +116,6 @@ fun LoginView(
                         fontWeight = FontWeight.SemiBold
                     )
                     Spacer(modifier = Modifier.height(24.dp))
-                    // Campo: cédula
                     NuckyTextField(
                         value = uiState.cedula,
                         onValueChange = viewModel::onCedulaChange,
@@ -131,7 +125,6 @@ fun LoginView(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // Campo: contraseña
                     NuckyTextField(
                         value = uiState.password,
                         onValueChange = { if (it.length <= 6) viewModel.onPasswordChange(it) },
@@ -142,11 +135,9 @@ fun LoginView(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Botón iniciar sesión
                     Button(
                         onClick = {
                             viewModel.onLoginClicked(
-                                // Navega a Home con la cédula del usuario
                                 onSuccess = { navController.navigate("home/${uiState.cedula}") },
                                 onError = {
                                     message = it
@@ -176,7 +167,6 @@ fun LoginView(
                         }
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    // Link para ir a registro
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center

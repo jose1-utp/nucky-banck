@@ -46,7 +46,6 @@ fun RegisterView(
         ShowLoadingAlertDialog()
     }
 
-    // Muestra el diálogo de resultado
     if (showDialog) {
         ShowMessageAlertDialog(
             onConfirmation = {
@@ -73,7 +72,6 @@ fun RegisterView(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            // ENCABEZADO
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -97,7 +95,6 @@ fun RegisterView(
                 )
             }
 
-            // CARD con formulario de registro
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
@@ -119,7 +116,6 @@ fun RegisterView(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Campo: nombre completo
                     NuckyTextField(
                         value = uiState.fullName,
                         onValueChange = viewModel::onFullNameChange,
@@ -128,7 +124,6 @@ fun RegisterView(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // Campo cédula
                     NuckyTextField(
                         value = uiState.cedula,
                         onValueChange = viewModel::onCedulaChange,
@@ -136,7 +131,6 @@ fun RegisterView(
                         keyboardType = KeyboardType.Number,
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    // Campo: contraseña
                     NuckyTextField(
                         value = uiState.password,
                         onValueChange = { if (it.length <= 6) viewModel.onPasswordChange(it) },
@@ -147,7 +141,6 @@ fun RegisterView(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // Campo: confirmar contraseña
                     NuckyTextField(
                         value = uiState.confirmPassword,
                         onValueChange = { if (it.length <= 6) viewModel.onConfirmPasswordChange(it) }, // ← límite 6
@@ -200,7 +193,6 @@ fun RegisterView(
                         }
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    // Link para volver al login
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center,

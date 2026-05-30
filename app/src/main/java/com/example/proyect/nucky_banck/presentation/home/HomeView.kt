@@ -59,13 +59,11 @@ fun HomeView(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            // Barra superior con saludo y botón de cerrar sesión
             TopBar(
                 nombre = uiState.fullName,
                 onLogout = { showLogoutDialog = true }
             )
 
-            // Card con el saldo y las acciones
             HomeCard(
                 saldo = uiState.saldo,
                 cedula = cedula,
@@ -80,7 +78,7 @@ fun HomeView(
                     Button(
                         onClick = {
                             showLogoutDialog = false
-                            onLogout() // Llama a la acción real de cerrar sesión
+                            onLogout()
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = NavyBlue)
                     ) {
@@ -96,7 +94,7 @@ fun HomeView(
                 },
                 title = {
                     Text(
-                        text = "¿Desea cerrar sesión?",
+                        text = stringResource(R.string.text_question_out),
                         color = TextDark,
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
@@ -104,7 +102,7 @@ fun HomeView(
                 },
                 text = {
                     Text(
-                        text = "Si sales de Nucky Bank, tendrás que ingresar tus datos nuevamente la próxima vez.",
+                        text = stringResource(R.string.text_question_out_cond),
                         color = TextDark.copy(alpha = 0.8f),
                         fontSize = 14.sp
                     )
@@ -173,7 +171,6 @@ private fun HomeCard(
                 .padding(horizontal = 28.dp, vertical = 36.dp)
         ) {
 
-            // Saldo disponible
             Text(text = stringResource(R.string.text_saldo), color = TextGray, fontSize = 14.sp)
 
             Text(
@@ -186,7 +183,6 @@ private fun HomeCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Etiqueta "Cuenta de ahorros"
             Surface(
                 shape = RoundedCornerShape(20.dp),
                 color = Emerald.copy(alpha = 0.12f)
@@ -203,7 +199,6 @@ private fun HomeCard(
             HorizontalDivider(color = BorderGray)
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Sección de acciones rápidas
             Text(
                 text = stringResource(R.string.title_actions),
                 color = TextDark,
@@ -215,15 +210,14 @@ private fun HomeCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                // Botón Transferir — navega a la pantalla de transferencia
+                //NO FUNCIONA
                 ActionButton(
                     emoji = "💸",
                     label = stringResource(R.string.btn_transfer),
                     modifier = Modifier.weight(1f),
                     onClick = { navController.navigate("transfer/$cedula") }
                 )
-
-                // Botón Extracto — sin función aún
+                //NO FUNCIONA
                 ActionButton(
                     emoji = "📄",
                     label = stringResource(R.string.btn_history),
@@ -231,35 +225,20 @@ private fun HomeCard(
                     onClick = { }
                 )
 
-                // Botón Recargar — sin función aún
                 ActionButton(
                     emoji = "💳",
-                    label = "Recargar",
+                    label = stringResource(R.string.btn_recargar),
                     modifier = Modifier.weight(1f),
                     onClick = { }
                 )
             }
             Spacer(modifier = Modifier.height(32.dp))
-            // Sección de movimientos
-            Text(
-                text = stringResource(R.string.text_moves),
-                color = TextDark,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = stringResource(R.string.text_no_moves),
-                color = TextGray,
-                fontSize = 14.sp
-            )
+
         }
     }
 }
 
-// ─────────────────────────────────────────────
-// Botón de acción rápida reutilizable
-// ─────────────────────────────────────────────
+
 @Composable
 private fun ActionButton(
     emoji: String,

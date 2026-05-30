@@ -43,9 +43,12 @@
     <string name="text_saldo">Saldo Disponible</string>
     <string name="title_account">Cuenta de Ahorras</string>
     <string name="title_actions">Acciones Rapidas</string>
-    <string name="btn_history">Extractos</string>
+    <string name="btn_history">Movimientos</string>
     <string name="text_moves">Ultimos movimientos</string>
     <string name="text_no_moves">Sin movimientos recientes</string>
+    <string name="btn_recargar">Recargar</string>
+    <string name="text_question_out">¿Desea cerrar sesión?</string>
+    <string name="text_question_out_cond">Si sales de Nucky Bank, tendrás que ingresar tus datos nuevamente la próxima vez.</string>
 
 
     <string name="btn_exit">Salir</string>

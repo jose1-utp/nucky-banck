@@ -8,7 +8,6 @@ data class User(
     val saldo: Double = 100000.0,
     val isLoading: Boolean = false,
 
-    // Errores en tiempo real
     val cedulaError: String? = null,
     val passwordError: String? = null,
     val fullNameError: String? = null,

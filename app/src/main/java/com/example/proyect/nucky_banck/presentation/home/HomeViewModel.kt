@@ -10,12 +10,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-// ViewModel de la pantalla Home.
-// Pide los datos del usuario a Firebase a través del HomeUseCase.
+
 class HomeViewModel(
     private val homeUseCase: HomeUseCase = HomeUseCase(FirebaseAuthRepositoryImpl()),
     private val logoutUseCase: LogoutUseCase = LogoutUseCase(FirebaseAuthRepositoryImpl())
-) : ViewModel() { // <-- Los dos puntos y el ViewModel() van AFUERA del paréntesis de los parámetros
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(User())
     val uiState: StateFlow<User> = _uiState.asStateFlow()

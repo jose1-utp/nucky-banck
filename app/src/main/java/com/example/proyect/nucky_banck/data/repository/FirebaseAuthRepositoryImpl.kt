@@ -15,12 +15,10 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
     override fun login(cedula: String, password: String, onResult: (Boolean, Int) -> Unit) {
         dataSource.getUser(cedula)
             .addOnSuccessListener { dataUser ->
-                // Si no existe el usuario
                 if (!dataUser.exists()) {
                     onResult(false, R.string.error_login_failed)
                     return@addOnSuccessListener
                 }
-                // Compara la contraseña ingresada con la guardada
                 val dbPassword = dataUser.child("password").value.toString()
 
                 if (dbPassword == password) {
@@ -34,19 +32,16 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
             }
     }
 
-    // ─────────────────────────────────────────────
-    // REGISTRO: verifica que no exista y guarda el usuario nuevo
-    // ─────────────────────────────────────────────
+
     override fun register(user: User, onResult: (Boolean, Int) -> Unit) {
         dataSource.getUser(user.cedula)
             .addOnSuccessListener { snapshot ->
-                // Si ya existe un usuario con esa cédula
+
                 if (snapshot.exists()) {
                     onResult(false, R.string.error_user_exists)
                     return@addOnSuccessListener
                 }
-                // Datos que se guardan en Firebase al registrarse
-                // El saldo inicial es 100000
+
                 val userData = mapOf(
                     "nombre" to user.fullName,
                     "cedula" to user.cedula,
@@ -66,9 +61,7 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
             }
     }
 
-    // ─────────────────────────────────────────────
-    // OBTENER USUARIO: carga nombre, cédula y saldo desde Firebase
-    // ─────────────────────────────────────────────
+
     override fun getUser(cedula: String, onResult: (User?) -> Unit) {
         dataSource.getUser(cedula)
             .addOnSuccessListener { snapshot ->
@@ -76,7 +69,6 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                     onResult(null)
                     return@addOnSuccessListener
                 }
-                // Lee el saldo guardado en Firebase; si no existe, usa 100000 por defecto
                 val saldoGuardado = snapshot.child("saldo").value
                 val saldo = saldoGuardado?.toString()?.toDoubleOrNull() ?: 100000.0
 
@@ -94,11 +86,8 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
             }
     }
 
-    // ─────────────────────────────────────────────
-    // TRANSFERENCIA: descuenta el monto al usuario que transfiere
-    // ─────────────────────────────────────────────
+
     override fun transferir(cedulaOrigen: String, cedulaDestino: String, monto: Double, onResult: (Boolean, String) -> Unit) {
-        // Primero verifica que el usuario destino exista
         if (cedulaOrigen == cedulaDestino) {
             onResult(false, "No puedes transferirte a ti mismo")
             return
@@ -111,13 +100,12 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                 }
 
                 val saldoDestino = snapshotDestino.child("saldo").value?.toString()?.toDoubleOrNull() ?: 100000.0
-                // Luego obtiene el saldo actual del usuario origen
+
                 dataSource.getUser(cedulaOrigen)
                     .addOnSuccessListener { snapshotOrigen ->
 
                         val saldoActual = snapshotOrigen.child("saldo").value?.toString()?.toDoubleOrNull() ?: 100000.0
 
-                        // Verifica que tenga saldo suficiente
                         if (monto > saldoActual) {
                             onResult(false, "Saldo insuficiente. Tu saldo es: ${"$%,.2f".format(saldoActual)}")
                             return@addOnSuccessListener
