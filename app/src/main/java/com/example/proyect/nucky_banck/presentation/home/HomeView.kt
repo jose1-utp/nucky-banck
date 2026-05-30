@@ -36,15 +36,13 @@ fun HomeView(
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    var showLogoutDialog by remember { mutableStateOf(false) }
 
 
     LaunchedEffect(Unit) {
         viewModel.loadUserData(cedula)
     }
-    // para no permitir volver atrás al login
-    BackHandler {
-        // No hace nada
-    }
+
 
     Box(
         modifier = Modifier
@@ -64,7 +62,7 @@ fun HomeView(
             // Barra superior con saludo y botón de cerrar sesión
             TopBar(
                 nombre = uiState.fullName,
-                onLogout = onLogout
+                onLogout = { showLogoutDialog = true }
             )
 
             // Card con el saldo y las acciones
@@ -72,6 +70,47 @@ fun HomeView(
                 saldo = uiState.saldo,
                 cedula = cedula,
                 navController = navController
+            )
+        }
+
+        if (showLogoutDialog) {
+            AlertDialog(
+                onDismissRequest = { showLogoutDialog = false },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            showLogoutDialog = false
+                            onLogout() // Llama a la acción real de cerrar sesión
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = NavyBlue)
+                    ) {
+                        Text(stringResource(R.string.btn_exit), color = White)
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = { showLogoutDialog = false }
+                    ) {
+                        Text(stringResource(R.string.btn_cancel), color = TextGray)
+                    }
+                },
+                title = {
+                    Text(
+                        text = "¿Desea cerrar sesión?",
+                        color = TextDark,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+                    )
+                },
+                text = {
+                    Text(
+                        text = "Si sales de Nucky Bank, tendrás que ingresar tus datos nuevamente la próxima vez.",
+                        color = TextDark.copy(alpha = 0.8f),
+                        fontSize = 14.sp
+                    )
+                },
+                shape = RoundedCornerShape(16.dp),
+                containerColor = White
             )
         }
     }

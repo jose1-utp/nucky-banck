@@ -11,9 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 // Implementa todos los métodos definidos en AuthRepository.
 class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource = FirebaseUserDataSource()
 ) : AuthRepository {
-    // ─────────────────────────────────────────────
-    // LOGIN: verifica cédula y contraseña en Firebase
-    // ─────────────────────────────────────────────
+
     override fun login(cedula: String, password: String, onResult: (Boolean, Int) -> Unit) {
         dataSource.getUser(cedula)
             .addOnSuccessListener { dataUser ->
@@ -101,6 +99,10 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
     // ─────────────────────────────────────────────
     override fun transferir(cedulaOrigen: String, cedulaDestino: String, monto: Double, onResult: (Boolean, String) -> Unit) {
         // Primero verifica que el usuario destino exista
+        if (cedulaOrigen == cedulaDestino) {
+            onResult(false, "No puedes transferirte a ti mismo")
+            return
+        }
         dataSource.getUser(cedulaDestino)
             .addOnSuccessListener { snapshotDestino ->
                 if (!snapshotDestino.exists()) {
@@ -108,6 +110,7 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                     return@addOnSuccessListener
                 }
 
+                val saldoDestino = snapshotDestino.child("saldo").value?.toString()?.toDoubleOrNull() ?: 100000.0
                 // Luego obtiene el saldo actual del usuario origen
                 dataSource.getUser(cedulaOrigen)
                     .addOnSuccessListener { snapshotOrigen ->
@@ -120,14 +123,18 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                             return@addOnSuccessListener
                         }
 
-                        // Calcula el nuevo saldo y lo guarda en Firebase
-                        val nuevoSaldo = saldoActual - monto
-                        dataSource.actualizarSaldo(cedulaOrigen, nuevoSaldo)
+                        val nuevoSaldoOrigen = saldoActual - monto
+                        val nuevoSaldoDestino = saldoDestino + monto
+                        dataSource.actualizarSaldo(cedulaOrigen, nuevoSaldoOrigen)
                             .addOnSuccessListener {
-                                onResult(true, "Transferencia exitosa. Nuevo saldo: ${"$%,.2f".format(nuevoSaldo)}")
-                            }
-                            .addOnFailureListener {
-                                onResult(false, "Error al actualizar el saldo")
+                                dataSource.actualizarSaldo(cedulaDestino, nuevoSaldoDestino
+                                ).addOnSuccessListener{
+                                    onResult(true, "Transferencia exitosa. Nuevo saldo: ${"$%,.2f".format(nuevoSaldoOrigen)}")
+                                }.addOnFailureListener {
+                                        onResult(false, "Error al actualizar el saldo de destino")
+                                }
+                            }.addOnFailureListener {
+                                onResult(false, "Error al actualizar tu saldo")
                             }
 
                     }.addOnFailureListener {
@@ -135,9 +142,10 @@ class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource 
                     }
 
             }.addOnFailureListener {
-                onResult(false, "Error al verificar el usuario destino")
+                onResult(false, "Error al verificar el usuario de destino")
             }
     }
+
 
     override fun logout() {
         FirebaseAuth.getInstance().signOut()

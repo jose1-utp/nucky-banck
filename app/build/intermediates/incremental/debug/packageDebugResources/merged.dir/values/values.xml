@@ -8,8 +8,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Nucky Bank</string>
+    <string name="app_phrase">Tu dinero, seguro y disponible</string>
     <string name="btn_accept">Aceptar</string>
+    <string name="btn_back">Volver</string>
     <string name="btn_cancel">Cancelar</string>
+    <string name="btn_exit">Salir</string>
+    <string name="btn_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="btn_history">Extractos</string>
     <string name="btn_login">Iniciar Sesión</string>
     <string name="btn_logout">Cerrar sesión</string>
     <string name="btn_register">Registrarse</string>
@@ -19,9 +24,11 @@
     <string name="error_cedula_invalida">La cédula debe tener entre 8 y 10 dígitos</string>
     <string name="error_login_failed">Cédula o contraseña incorrecta</string>
     <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
-    <string name="error_password_invalida">La contraseña debe tener mínimo 6 caracteres, una mayúscula y un carácter especial</string>
+    <string name="error_password_invalida">La contraseña debe tener mínimo 6 caracteres entre ellos especiales y mayusculas</string>
+    <string name="error_passwords_match">Las contraseñas no coinciden</string>
     <string name="error_passwords_no_coinciden">Las contraseñas no coinciden</string>
     <string name="error_register_failed">Hubo un error al crear la cuenta</string>
+    <string name="error_tranfer">El nombre no puede estar vacío</string>
     <string name="error_user_exists">Ya existe el usuario con esa cédula</string>
     <string name="gcm_defaultSenderId" translatable="false">178575808489</string>
     <string name="google_api_key" translatable="false">AIzaSyB0r6YMPIsv3wf6TwMQjyEY1ETJoGNoR5I</string>
@@ -32,15 +39,31 @@
     <string name="label_confirm_password">Confirmar Contraseña</string>
     <string name="label_document_number">Número de Cédula</string>
     <string name="label_full_name">Nombre Completo</string>
+    <string name="label_login">Iniciar Sesion</string>
     <string name="label_monto">Monto a transferir</string>
     <string name="label_password">Contraseña</string>
+    <string name="login_title">Nucky Bank</string>
     <string name="project_id" translatable="false">nucky-banck</string>
+    <string name="register_loading_title">Registrando</string>
     <string name="register_success_message">Cuenta creada correctamente</string>
     <string name="register_title">Crear Cuenta</string>
+    <string name="register_title_card">Registro</string>
+    <string name="register_title_phrase">Unete a Nucky Bank</string>
     <string name="text_already_have_account">¿Ya tienes cuenta?</string>
     <string name="text_loading">Cargando...</string>
+    <string name="text_login_here">Inicia sesión</string>
+    <string name="text_moves">Ultimos movimientos</string>
     <string name="text_no_account">¿No tienes cuenta?</string>
+    <string name="text_no_moves">Sin movimientos recientes</string>
+    <string name="text_register">Regístrate</string>
+    <string name="text_saldo">Saldo Disponible</string>
+    <string name="text_trans_data">Datos de la transferencia</string>
+    <string name="text_trans_description">Envía dinero a otro usuario</string>
+    <string name="text_trans_succ">Transferencia Exitosa</string>
     <string name="text_welcome">Bienvenido</string>
+    <string name="text_welcome_again">Bienvenido de Nuevo</string>
+    <string name="title_account">Cuenta de Ahorras</string>
+    <string name="title_actions">Acciones Rapidas</string>
     <string name="transfer_title">Transferencia</string>
     <style name="Theme.Nuckybanck" parent="android:Theme.Material.Light.NoActionBar"/>
 </resources>

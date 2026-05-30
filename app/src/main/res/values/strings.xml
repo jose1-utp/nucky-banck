@@ -47,16 +47,19 @@
     <string name="text_moves">Ultimos movimientos</string>
     <string name="text_no_moves">Sin movimientos recientes</string>
 
+
+    <string name="btn_exit">Salir</string>
+
+
     <!-- TRANSFER -->
     <string name="transfer_title">Transferencia</string>
     <string name="label_cedula_destino">Cédula del destinatario</string>
     <string name="label_monto">Monto a transferir</string>
     <string name="btn_transfer">Transferir</string>
     <string name="text_trans_succ">Transferencia Exitosa</string>
-    <string name="btn_exit">Volver</string>
+    <string name="btn_back">Volver</string>
     <string name="text_trans_description">Envía dinero a otro usuario</string>
     <string name="text_trans_data">Datos de la transferencia</string>
-    <string name="btn_cancelar">Cancelar</string>
 
     <string name="error_tranfer">El nombre no puede estar vacío</string>
 
