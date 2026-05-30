@@ -1,0 +1,145 @@
+package com.example.proyect.nucky_banck.data.repository
+
+import com.example.proyect.nucky_banck.data.datasource.FirebaseUserDataSource
+import com.example.proyect.nucky_banck.domain.model.User
+import com.example.proyect.nucky_banck.domain.model.Transfer
+import com.example.proyect.nucky_banck.domain.repository.AuthRepository
+import com.example.proyect.nucky_banck.R
+import com.google.firebase.auth.FirebaseAuth
+
+// Es el intermediario entre los UseCases y Firebase (FirebaseUserDataSource).
+// Implementa todos los métodos definidos en AuthRepository.
+class FirebaseAuthRepositoryImpl(private val dataSource: FirebaseUserDataSource = FirebaseUserDataSource()
+) : AuthRepository {
+    // ─────────────────────────────────────────────
+    // LOGIN: verifica cédula y contraseña en Firebase
+    // ─────────────────────────────────────────────
+    override fun login(cedula: String, password: String, onResult: (Boolean, Int) -> Unit) {
+        dataSource.getUser(cedula)
+            .addOnSuccessListener { dataUser ->
+                // Si no existe el usuario
+                if (!dataUser.exists()) {
+                    onResult(false, R.string.error_login_failed)
+                    return@addOnSuccessListener
+                }
+                // Compara la contraseña ingresada con la guardada
+                val dbPassword = dataUser.child("password").value.toString()
+
+                if (dbPassword == password) {
+                    onResult(true, 0)
+                } else {
+                    onResult(false, R.string.error_login_failed)
+                }
+
+            }.addOnFailureListener {
+                onResult(false, R.string.error_login_failed)
+            }
+    }
+
+    // ─────────────────────────────────────────────
+    // REGISTRO: verifica que no exista y guarda el usuario nuevo
+    // ─────────────────────────────────────────────
+    override fun register(user: User, onResult: (Boolean, Int) -> Unit) {
+        dataSource.getUser(user.cedula)
+            .addOnSuccessListener { snapshot ->
+                // Si ya existe un usuario con esa cédula
+                if (snapshot.exists()) {
+                    onResult(false, R.string.error_user_exists)
+                    return@addOnSuccessListener
+                }
+                // Datos que se guardan en Firebase al registrarse
+                // El saldo inicial es 100000
+                val userData = mapOf(
+                    "nombre"   to user.fullName,
+                    "cedula"   to user.cedula,
+                    "password" to user.password,
+                    "saldo"    to "100000.0")
+
+                dataSource.saveUser(user.cedula, userData)
+                    .addOnSuccessListener {
+                        onResult(true, R.string.register_success_message)
+                    }
+                    .addOnFailureListener {
+                        onResult(false, R.string.error_register_failed)
+                    }
+
+            }.addOnFailureListener {
+                onResult(false, R.string.error_register_failed)
+            }
+    }
+
+    // ─────────────────────────────────────────────
+    // OBTENER USUARIO: carga nombre, cédula y saldo desde Firebase
+    // ─────────────────────────────────────────────
+    override fun getUser(cedula: String, onResult: (User?) -> Unit) {
+        dataSource.getUser(cedula)
+            .addOnSuccessListener { snapshot ->
+                if (!snapshot.exists()) {
+                    onResult(null)
+                    return@addOnSuccessListener
+                }
+                // Lee el saldo guardado en Firebase; si no existe, usa 100000 por defecto
+                val saldoGuardado = snapshot.child("saldo").value
+                val saldo = saldoGuardado?.toString()?.toDoubleOrNull() ?: 100000.0
+
+                val user = User(
+                    fullName = snapshot.child("nombre").value.toString(),
+                    cedula   = snapshot.child("cedula").value.toString(),
+                    password = snapshot.child("password").value.toString(),
+                    saldo    = saldo
+                )
+
+                onResult(user)
+
+            }.addOnFailureListener {
+                onResult(null)
+            }
+    }
+
+    // ─────────────────────────────────────────────
+    // TRANSFERENCIA: descuenta el monto al usuario que transfiere
+    // ─────────────────────────────────────────────
+    override fun transferir(cedulaOrigen: String, cedulaDestino: String, monto: Double, onResult: (Boolean, String) -> Unit) {
+        // Primero verifica que el usuario destino exista
+        dataSource.getUser(cedulaDestino)
+            .addOnSuccessListener { snapshotDestino ->
+                if (!snapshotDestino.exists()) {
+                    onResult(false, "El usuario destino no existe")
+                    return@addOnSuccessListener
+                }
+
+                // Luego obtiene el saldo actual del usuario origen
+                dataSource.getUser(cedulaOrigen)
+                    .addOnSuccessListener { snapshotOrigen ->
+
+                        val saldoActual = snapshotOrigen.child("saldo").value?.toString()?.toDoubleOrNull() ?: 100000.0
+
+                        // Verifica que tenga saldo suficiente
+                        if (monto > saldoActual) {
+                            onResult(false, "Saldo insuficiente. Tu saldo es: ${"$%,.2f".format(saldoActual)}")
+                            return@addOnSuccessListener
+                        }
+
+                        // Calcula el nuevo saldo y lo guarda en Firebase
+                        val nuevoSaldo = saldoActual - monto
+                        dataSource.actualizarSaldo(cedulaOrigen, nuevoSaldo)
+                            .addOnSuccessListener {
+                                onResult(true, "Transferencia exitosa. Nuevo saldo: ${"$%,.2f".format(nuevoSaldo)}")
+                            }
+                            .addOnFailureListener {
+                                onResult(false, "Error al actualizar el saldo")
+                            }
+
+                    }.addOnFailureListener {
+                        onResult(false, "Error al obtener tu saldo")
+                    }
+
+            }.addOnFailureListener {
+                onResult(false, "Error al verificar el usuario destino")
+            }
+    }
+    override fun signOut() {
+        FirebaseAuth.getInstance().signOut()
+
+    }
+}

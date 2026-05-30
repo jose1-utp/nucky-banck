@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Nucky Bank</string>
+
+    <!-- TEXTOS GENERALES -->
+    <string name="text_welcome">Bienvenido</string>
+    <string name="text_loading">Cargando...</string>
+
+    <!-- BOTONES -->
+    <string name="btn_accept">Aceptar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_logout">Cerrar sesión</string>
+
+    <!-- LOGIN -->
+    <string name="label_document_number">Número de Cédula</string>
+    <string name="label_password">Contraseña</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="text_no_account">¿No tienes cuenta?</string>
+    <string name="error_login_failed">Cédula o contraseña incorrecta</string>
+    <string name="login_title">Nucky Bank</string>
+    <string name="app_phrase">Tu dinero, seguro y disponible</string>
+
+    <string name="label_login">Iniciar Sesion</string>
+    <string name="btn_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="text_register">Regístrate</string>
+    <!-- REGISTER -->
+    <string name="register_title">Crear Cuenta</string>
+    <string name="label_full_name">Nombre Completo</string>
+    <string name="label_confirm_password">Confirmar Contraseña</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="text_already_have_account">¿Ya tienes cuenta?</string>
+    <string name="dialog_success_title">Éxito</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="register_success_message">Cuenta creada correctamente</string>
+    <string name="error_register_failed">Hubo un error al crear la cuenta</string>
+    <string name="error_user_exists">Ya existe el usuario con esa cédula</string>
+    <string name="register_title_phrase">Unete a Nucky Bank</string>
+    <string name="register_title_card">Registro</string>
+    <string name="text_login_here">Inicia sesión</string>
+    <string name="register_loading_title">Registrando</string>
+    <string name="error_passwords_match">Las contraseñas no coinciden</string>
+    <!-- HOME -->
+    <string name="text_welcome_again">Bienvenido de Nuevo</string>
+    <string name="text_saldo">Saldo Disponible</string>
+    <string name="title_account">Cuenta de Ahorras</string>
+    <string name="title_actions">Acciones Rapidas</string>
+    <string name="btn_history">Extractos</string>
+    <string name="text_moves">Ultimos movimientos</string>
+    <string name="text_no_moves">Sin movimientos recientes</string>
+
+    <!-- TRANSFER -->
+    <string name="transfer_title">Transferencia</string>
+    <string name="label_cedula_destino">Cédula del destinatario</string>
+    <string name="label_monto">Monto a transferir</string>
+    <string name="btn_transfer">Transferir</string>
+    <string name="text_trans_succ">Transferencia Exitosa</string>
+    <string name="btn_exit">Volver</string>
+    <string name="text_trans_description">Envía dinero a otro usuario</string>
+    <string name="text_trans_data">Datos de la transferencia</string>
+    <string name="btn_cancelar">Cancelar</string>
+
+
+    <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
+    <string name="error_cedula_invalida">La cédula debe tener entre 8 y 10 dígitos</string>
+    <string name="error_password_invalida">La contraseña debe tener mínimo 6 caracteres entre ellos especiales y mayusculas</string>
+    <string name="error_passwords_no_coinciden">Las contraseñas no coinciden</string>
+</resources>

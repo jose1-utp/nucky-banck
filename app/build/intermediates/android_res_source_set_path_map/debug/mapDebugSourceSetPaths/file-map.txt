@@ -1,0 +1,57 @@
+com.example.proyect.nucky_banck.app-lifecycle-viewmodel-savedstate-release-0 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\05a88fa64c5dcc28c06cb7fb80bc6aa3\workspace\transformed\lifecycle-viewmodel-savedstate-release\res
+com.example.proyect.nucky_banck.app-core-1.18.0-1 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\07354aadfa9a863a71020eccf8e9cc2e\workspace\transformed\core-1.18.0\res
+com.example.proyect.nucky_banck.app-lifecycle-livedata-core-ktx-2.9.4-2 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\09c5e7ae8e8b245ef3d06ce390106b67\workspace\transformed\lifecycle-livedata-core-ktx-2.9.4\res
+com.example.proyect.nucky_banck.app-lifecycle-viewmodel-compose-release-3 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\164940823c470cae72e9dc405a945b84\workspace\transformed\lifecycle-viewmodel-compose-release\res
+com.example.proyect.nucky_banck.app-annotation-experimental-1.5.0-4 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\22b7489d7f20e4d3a29ede3aa58a3ea4\workspace\transformed\annotation-experimental-1.5.0\res
+com.example.proyect.nucky_banck.app-activity-1.13.0-5 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\279f27685d3415feac9f799073ebd192\workspace\transformed\activity-1.13.0\res
+com.example.proyect.nucky_banck.app-ui-graphics-release-6 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\2b7d59ca43dce10a3d154f833bdb12ab\workspace\transformed\ui-graphics-release\res
+com.example.proyect.nucky_banck.app-graphics-path-1.0.1-7 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\2d676a41f2784508656d2420e70f6827\workspace\transformed\graphics-path-1.0.1\res
+com.example.proyect.nucky_banck.app-foundation-release-8 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\2dd784cfd9556b376c2f6c861b1c80d2\workspace\transformed\foundation-release\res
+com.example.proyect.nucky_banck.app-navigationevent-9 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\398be291a073ce9c10c0a80bc5fc9df4\workspace\transformed\navigationevent\res
+com.example.proyect.nucky_banck.app-material-release-10 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\3bad593fc3a466b64f71792aed69857a\workspace\transformed\material-release\res
+com.example.proyect.nucky_banck.app-activity-compose-1.13.0-11 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\3d0dee8e03e38abfe59eb9bb248d1837\workspace\transformed\activity-compose-1.13.0\res
+com.example.proyect.nucky_banck.app-savedstate-ktx-1.3.3-12 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\4ea946071cd8c49bdea86d50c5d916f8\workspace\transformed\savedstate-ktx-1.3.3\res
+com.example.proyect.nucky_banck.app-profileinstaller-1.4.0-13 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\5345358d9cd0d1a374627dd2102f5be3\workspace\transformed\profileinstaller-1.4.0\res
+com.example.proyect.nucky_banck.app-startup-runtime-1.1.1-14 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\538fe5755059253d1b37746f651f4549\workspace\transformed\startup-runtime-1.1.1\res
+com.example.proyect.nucky_banck.app-material-ripple-release-15 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\54aa1ec2bcb451859add121e71bc07b6\workspace\transformed\material-ripple-release\res
+com.example.proyect.nucky_banck.app-lifecycle-viewmodel-ktx-2.9.4-16 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\575ee5bae47c0a4d6670174d83453981\workspace\transformed\lifecycle-viewmodel-ktx-2.9.4\res
+com.example.proyect.nucky_banck.app-tracing-1.2.0-17 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\664a241ca6cfe79453250518e2133188\workspace\transformed\tracing-1.2.0\res
+com.example.proyect.nucky_banck.app-ui-release-18 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\677d219b0a3d1a4a83b07b64d8ae5760\workspace\transformed\ui-release\res
+com.example.proyect.nucky_banck.app-ui-test-manifest-1.9.2-19 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\6795c58679071d7f52b0c1a0341d9164\workspace\transformed\ui-test-manifest-1.9.2\res
+com.example.proyect.nucky_banck.app-lifecycle-process-2.9.4-20 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\6e2e8f33cf40caa3cea0f83817c2025b\workspace\transformed\lifecycle-process-2.9.4\res
+com.example.proyect.nucky_banck.app-navigation-compose-2.7.7-21 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\77715db9fa5586527db1ec5d7e2a1086\workspace\transformed\navigation-compose-2.7.7\res
+com.example.proyect.nucky_banck.app-browser-1.4.0-22 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\809f1ea66f18f405ca9687a4e04ba078\workspace\transformed\browser-1.4.0\res
+com.example.proyect.nucky_banck.app-navigation-common-2.7.7-23 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\80f876647d59b1099836ec3992a907b0\workspace\transformed\navigation-common-2.7.7\res
+com.example.proyect.nucky_banck.app-core-ktx-1.18.0-24 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\833e54763e3667140a7b243303119a01\workspace\transformed\core-ktx-1.18.0\res
+com.example.proyect.nucky_banck.app-customview-poolingcontainer-1.0.0-25 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\8b0a415fcaf5741f80b4ee853eca6721\workspace\transformed\customview-poolingcontainer-1.0.0\res
+com.example.proyect.nucky_banck.app-core-runtime-2.2.0-26 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\8e8900c539147e65e93a2214f9e603d9\workspace\transformed\core-runtime-2.2.0\res
+com.example.proyect.nucky_banck.app-lifecycle-livedata-2.9.4-27 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\983d28418dd35aa3ba6e2715d4487337\workspace\transformed\lifecycle-livedata-2.9.4\res
+com.example.proyect.nucky_banck.app-navigation-runtime-ktx-2.7.7-28 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\a36b4faa53f8c2e655d5f6a398054c4a\workspace\transformed\navigation-runtime-ktx-2.7.7\res
+com.example.proyect.nucky_banck.app-credentials-1.2.0-rc01-29 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\a51dfa6b132765764f0f4008dec25655\workspace\transformed\credentials-1.2.0-rc01\res
+com.example.proyect.nucky_banck.app-material3-30 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\a95b8e757a91cd464a859a855f70f7f8\workspace\transformed\material3\res
+com.example.proyect.nucky_banck.app-navigation-runtime-2.7.7-31 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\ae3d7df5a091e1c587699038cdbf8dbe\workspace\transformed\navigation-runtime-2.7.7\res
+com.example.proyect.nucky_banck.app-material-icons-extended-release-32 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\b1e5638ec24cdde2b603b4dde7e56ac5\workspace\transformed\material-icons-extended-release\res
+com.example.proyect.nucky_banck.app-credentials-play-services-auth-1.2.0-rc01-33 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\b3232aab85cdea466e5c9db464328aa5\workspace\transformed\credentials-play-services-auth-1.2.0-rc01\res
+com.example.proyect.nucky_banck.app-play-services-auth-20.7.0-34 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\b7151aebe763ccb2669f73b0e7523855\workspace\transformed\play-services-auth-20.7.0\res
+com.example.proyect.nucky_banck.app-savedstate-release-35 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\bbf6679ce5d7ba3ee940985a1b8af74f\workspace\transformed\savedstate-release\res
+com.example.proyect.nucky_banck.app-navigation-common-ktx-2.7.7-36 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\bc4251650b3ecd6b66207bb0ba1e3b28\workspace\transformed\navigation-common-ktx-2.7.7\res
+com.example.proyect.nucky_banck.app-activity-ktx-1.13.0-37 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\bf2362eaea12dce43d2ffb1edc674cec\workspace\transformed\activity-ktx-1.13.0\res
+com.example.proyect.nucky_banck.app-emoji2-1.4.0-38 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\c10e17354399739c3cf216d0c375847b\workspace\transformed\emoji2-1.4.0\res
+com.example.proyect.nucky_banck.app-lifecycle-runtime-compose-release-39 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\c268f96620e3663fe1a09b75936140cc\workspace\transformed\lifecycle-runtime-compose-release\res
+com.example.proyect.nucky_banck.app-play-services-basement-18.3.0-40 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\c694dce2daf618ded148ee1fee01062b\workspace\transformed\play-services-basement-18.3.0\res
+com.example.proyect.nucky_banck.app-core-viewtree-1.0.0-41 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\c7211dbe33df01d464c1028a8016d02f\workspace\transformed\core-viewtree-1.0.0\res
+com.example.proyect.nucky_banck.app-firebase-common-21.0.0-42 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\c9306ab3b40ecea9d4eced9d489c3ecf\workspace\transformed\firebase-common-21.0.0\res
+com.example.proyect.nucky_banck.app-lifecycle-runtime-release-43 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\dd7d7702ec9e43fc7936d027ee351242\workspace\transformed\lifecycle-runtime-release\res
+com.example.proyect.nucky_banck.app-room-ktx-2.8.4-44 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\f3ac510210a5360cb7db4eb47c121e90\workspace\transformed\room-ktx-2.8.4\res
+com.example.proyect.nucky_banck.app-material-icons-core-release-45 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\f42861897d4ddcbca747f6004dd8d445\workspace\transformed\material-icons-core-release\res
+com.example.proyect.nucky_banck.app-play-services-base-18.1.0-46 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\f4fdf3f48a632f8b24c813b77e5a31d3\workspace\transformed\play-services-base-18.1.0\res
+com.example.proyect.nucky_banck.app-lifecycle-livedata-core-2.9.4-47 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\f8757ce2d1b9f3ad70ca90863404c5f3\workspace\transformed\lifecycle-livedata-core-2.9.4\res
+com.example.proyect.nucky_banck.app-lifecycle-viewmodel-release-48 C:\Users\HP PAVILION\.gradle\caches\9.2.1\transforms\fc08132530441acd8578b11396da897e\workspace\transformed\lifecycle-viewmodel-release\res
+com.example.proyect.nucky_banck.app-pngs-49 C:\proyectos\nucky_banck\app\build\generated\res\pngs\debug
+com.example.proyect.nucky_banck.app-res-50 C:\proyectos\nucky_banck\app\build\generated\res\processDebugGoogleServices
+com.example.proyect.nucky_banck.app-updated_navigation_xml-51 C:\proyectos\nucky_banck\app\build\generated\updated_navigation_xml\debug
+com.example.proyect.nucky_banck.app-packageDebugResources-52 C:\proyectos\nucky_banck\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.proyect.nucky_banck.app-packageDebugResources-53 C:\proyectos\nucky_banck\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.proyect.nucky_banck.app-debug-54 C:\proyectos\nucky_banck\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.proyect.nucky_banck.app-debug-55 C:\proyectos\nucky_banck\app\src\debug\res
+com.example.proyect.nucky_banck.app-main-56 C:\proyectos\nucky_banck\app\src\main\res

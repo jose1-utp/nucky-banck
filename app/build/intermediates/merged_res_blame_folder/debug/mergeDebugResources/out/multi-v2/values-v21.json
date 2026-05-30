@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.proyect.nucky_banck.app-mergeDebugResources-51:/values-v21/values-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\HP PAVILION\\.gradle\\caches\\9.2.1\\transforms\\b3232aab85cdea466e5c9db464328aa5\\workspace\\transformed\\credentials-play-services-auth-1.2.0-rc01\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "543"
+                    }
+                }
+            ]
+        }
+    ]
+}

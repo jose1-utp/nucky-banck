@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Nucky Bank</string>
+    <string name="btn_accept">Aceptar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="btn_logout">Cerrar sesión</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="btn_transfer">Transferir</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="dialog_success_title">Éxito</string>
+    <string name="error_cedula_invalida">La cédula debe tener entre 8 y 10 dígitos</string>
+    <string name="error_login_failed">Cédula o contraseña incorrecta</string>
+    <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
+    <string name="error_password_invalida">La contraseña debe tener mínimo 6 caracteres, una mayúscula y un carácter especial</string>
+    <string name="error_passwords_no_coinciden">Las contraseñas no coinciden</string>
+    <string name="error_register_failed">Hubo un error al crear la cuenta</string>
+    <string name="error_user_exists">Ya existe el usuario con esa cédula</string>
+    <string name="gcm_defaultSenderId" translatable="false">178575808489</string>
+    <string name="google_api_key" translatable="false">AIzaSyB0r6YMPIsv3wf6TwMQjyEY1ETJoGNoR5I</string>
+    <string name="google_app_id" translatable="false">1:178575808489:android:25e5fdad4798de188e5d78</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB0r6YMPIsv3wf6TwMQjyEY1ETJoGNoR5I</string>
+    <string name="google_storage_bucket" translatable="false">nucky-banck.firebasestorage.app</string>
+    <string name="label_cedula_destino">Cédula del destinatario</string>
+    <string name="label_confirm_password">Confirmar Contraseña</string>
+    <string name="label_document_number">Número de Cédula</string>
+    <string name="label_full_name">Nombre Completo</string>
+    <string name="label_monto">Monto a transferir</string>
+    <string name="label_password">Contraseña</string>
+    <string name="project_id" translatable="false">nucky-banck</string>
+    <string name="register_success_message">Cuenta creada correctamente</string>
+    <string name="register_title">Crear Cuenta</string>
+    <string name="text_already_have_account">¿Ya tienes cuenta?</string>
+    <string name="text_loading">Cargando...</string>
+    <string name="text_no_account">¿No tienes cuenta?</string>
+    <string name="text_welcome">Bienvenido</string>
+    <string name="transfer_title">Transferencia</string>
+    <style name="Theme.Nuckybanck" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>
